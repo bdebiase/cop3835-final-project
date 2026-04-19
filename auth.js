@@ -38,7 +38,7 @@ signupForm.addEventListener("submit", (e) => {
 skipAuthButton.addEventListener("click", () => {
     localStorage.setItem("currentUser", "user");
     localStorage.setItem("rememberMe", "false");
-    window.location.href = "../index.html";
+    window.location.href = "index.html";
 });
 
 function addAccount(email, password) {
@@ -48,8 +48,8 @@ function addAccount(email, password) {
         accounts.push({ email, password });
         localStorage.setItem("accounts", JSON.stringify(accounts));
         localStorage.setItem("currentUser", email);
-        window.location.replace("#login"); // clear #signup from history so user when user goes back it opens login
-        window.location.href = "../index.html";
+        history.replaceState(null, "", "#login"); // clear #signup from history so user when user goes back it opens login
+        window.location.href = "index.html";
         return;
     }
 
@@ -68,7 +68,7 @@ function validateAccount(email, password) {
         if (foundAccount.password === password) {
             localStorage.setItem("currentUser", email);
             localStorage.setItem("rememberMe", loginForm.querySelector("#remember").checked);
-            window.location.href = "../index.html";
+            window.location.href = "index.html";
             return;
         }
     } else {
@@ -81,7 +81,7 @@ function validateAccount(email, password) {
 // HASH
 window.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("rememberMe") === "true" && localStorage.getItem("currentUser")) {
-        window.location.replace("../index.html");
+        window.location.replace("index.html");
         return;
     } else if (localStorage.getItem("rememberMe") === "false") {
         localStorage.removeItem("currentUser");
