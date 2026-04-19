@@ -22,7 +22,7 @@ accountIcon.addEventListener('click', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
     const currentUser = localStorage.getItem('currentUser');
     if (!currentUser) {
-        window.location.href = '/auth/auth.html';
+        window.location.href = 'auth/auth.html';
         return;
     }
 
@@ -42,7 +42,7 @@ logoutButton.addEventListener('click', (e) => {
     e.preventDefault();
     localStorage.removeItem('currentUser');
     localStorage.removeItem('rememberMe');
-    window.location.href = '/auth/auth.html';
+    window.location.href = 'auth/auth.html';
 });
 
 function closeDropdown() {
