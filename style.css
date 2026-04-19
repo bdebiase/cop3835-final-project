@@ -452,7 +452,7 @@ nav.compact {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
     aside {
         width: unset;
 
@@ -463,5 +463,19 @@ nav.compact {
         nav.compact {
             display: flex;
         }
+    }
+
+    .content {
+        font-size: 80%;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .overview-container {
+        flex-direction: column;
+    }
+
+    .overview-container section {
+        min-width: 0;
     }
 }
