@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+    Author: Benjamin DeBiase
+    Date: 04/19/26
+    Main index page, overview of dashboard
+--->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Dashboard - Overview</title>
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="theme.js" defer></script>
+    <script src="dashboard.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h2>
+            <img src="/icons/graduation-cap.png" class="site-icon">Academic Dashboard</image>
+        </h2>
+        <a href="" class="account-icon"><img src="icons/circle-user-solid.png" class="icon"></a>
+    </header>
+
+    <main>
+        <div class="dropdown">
+            <h4>Signed in as</h4>
+            <div class="account-name">user</div>
+            <a href="" class="logout"><img src="icons/right-from-bracket-solid.png" class="icon">Log out</a>
+        </div>
+
+        <aside>
+            <nav class="normal">
+                <a href="/" class="active"><img src="icons/house-solid.png" class="icon">Overview</a>
+                <a href="settings.html"><img src="icons/gear-solid.png" class="icon">Settings</a>
+                <a href="profile.html"><img src="icons/user-solid.png" class="icon">Profile</a>
+                <div class="spacer"></div>
+                <a href="about.html"><img src="icons/circle-info-solid.png" class="icon">About</a>
+            </nav>
+
+            <nav class="compact">
+                <a href="/" class="active"><img src="icons/house-solid.png" class="icon"></a>
+                <a href="settings.html"><img src="icons/gear-solid.png" class="icon"></a>
+                <a href="profile.html"><img src="icons/user-solid.png" class="icon"></a>
+                <div class="spacer"></div>
+                <a href="about.html"><img src="icons/circle-info-solid.png" class="icon"></a>
+            </nav>
+        </aside>
+
+        <div class="content">
+            <div class="item">
+                <h1>Overview</h1>
+                <h2 style="opacity: 0.75;">Welcome, <i id="overview-username">user</i>!</h2>
+            </div>
+
+            <div class="overview-container">
+                <section style="align-items: center;">
+                    <h3 style="margin-top: 0;">GPA Chart (3.8)</h3>
+                    <!-- https://medium.com/quick-programming/creating-a-simple-pie-chart-in-css-using-a-conic-gradient-cb154aefea29 -->
+                    <div class="pie hollow"></div>
+                </section>
+
+                <section>
+                    <h3>Summary</h3>
+                    <hr>
+                    <div class="item">
+                        <span>COP3835 - Web Pages</span>
+                        <strong>98% (A)</strong>
+                    </div>
+                    <hr>
+                    <div class="item">
+                        <span>COP4710 - Database Management</span>
+                        <strong>94% (A)</strong>
+                    </div>
+                    <hr>
+                    <div class="item">
+                        <span>MAC2311 - Calculus 1</span>
+                        <strong>87% (B+)</strong>
+                    </div>
+                </section>
+            </div>
+
+            <hr style="margin-top: 1rem;" />
+
+            <div class="item" style="margin-top: 1rem;">
+                <h2>Classes</h2>
+                <button id="add-class-btn"><img src="icons/plus-solid.png" class="icon"> New Class</button>
+            </div>
+
+            <div class="classes-container">
+                <section class="class">
+                    <a class="delete-class">
+                        <img src="icons/xmark-solid.png" class="icon">
+                    </a>
+                    <div class="item">
+                        <h2>COP3835 - Designing Web Pages</h2>
+                        <h3 class="grade-average">98% (A)</h3>
+                    </div>
+
+                    <hr>
+
+                    <table>
+                        <tr>
+                            <th>Assignment</th>
+                            <th>Score</th>
+                            <th>Grade</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Homework 1</td>
+                            <td>19<span class="slash">/</span>20</td>
+                            <td>A</td>
+                            <td><a class="delete"><img src="icons/trash-solid.png" class="icon"></a></td>
+                        </tr>
+                        <tr>
+                            <td>Homework 2</td>
+                            <td>20<span class="slash">/</span>20</td>
+                            <td>A</td>
+                            <td><a class="delete"><img src="icons/trash-solid.png" class="icon"></a></td>
+                        </tr>
+                        <tr>
+                            <td>Homework 3</td>
+                            <td>20<span class="slash">/</span>20</td>
+                            <td>A</td>
+                            <td><a class="delete"><img src="icons/trash-solid.png" class="icon"></a></td>
+                        </tr>
+                    </table>
+                    <div style="display: flex;">
+                        <button class="add"><img src="icons/plus-solid.png" class="icon"> Add</button>
+                        <div style="flex-grow: 1;"></div>
+                        <button class="edit"><img src="icons/pen-solid.png" class="icon"> Edit</button>
+                    </div>
+                </section>
+
+                <section class="class">
+                    <a class="delete-class">
+                        <img src="icons/xmark-solid.png" class="icon">
+                    </a>
+                    <div class="item">
+                        <h2>COP4710 - Database Management</h2>
+                        <h3 class="grade-average">94% (A)</h3>
+                    </div>
+
+                    <hr>
+
+                    <table>
+                        <tr>
+                            <th>Assignment</th>
+                            <th>Score</th>
+                            <th>Grade</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Module 1 | Assignment 1</td>
+                            <td>14<span class="slash">/</span>15</td>
+                            <td>A</td>
+                            <td><a class="delete"><img src="icons/trash-solid.png" class="icon"></a></td>
+                        </tr>
+                        <tr>
+                            <td>Module 1 | Assignment 2</td>
+                            <td>13<span class="slash">/</span>15</td>
+                            <td>B</td>
+                            <td><a class="delete"><img src="icons/trash-solid.png" class="icon"></a></td>
+                        </tr>
+                        <tr>
+                            <td>Module 1 | Assignment 3</td>
+                            <td>15<span class="slash">/</span>15</td>
+                            <td>A</td>
+                            <td><a class="delete"><img src="icons/trash-solid.png" class="icon"></a></td>
+                        </tr>
+                        <tr>
+                            <td>Module 1 | Exam</td>
+                            <td>95<span class="slash">/</span>100</td>
+                            <td>A</td>
+                            <td><a class="delete"><img src="icons/trash-solid.png" class="icon"></a></td>
+                        </tr>
+                    </table>
+                    <div style="display: flex;">
+                        <button class="add"><img src="icons/plus-solid.png" class="icon"> Add</button>
+                        <div style="flex-grow: 1;"></div>
+                        <button class="edit"><img src="icons/pen-solid.png" class="icon"> Edit</button>
+                    </div>
+                </section>
+
+                <section class="class">
+                    <a class="delete-class">
+                        <img src="icons/xmark-solid.png" class="icon">
+                    </a>
+                    <div class="item">
+                        <h2>MAC2311 - Calculus 1</h2>
+                        <h3 class="grade-average">87% (B+)</h3>
+                    </div>
+
+                    <hr>
+
+                    <table>
+                        <tr>
+                            <th>Assignment</th>
+                            <th>Score</th>
+                            <th>Grade</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Quiz 1</td>
+                            <td>22<span class="slash">/</span>25</td>
+                            <td>B+</td>
+                            <td><a class="delete"><img src="icons/trash-solid.png" class="icon"></a></td>
+                        </tr>
+                        <tr>
+                            <td>Exam 1</td>
+                            <td>85<span class="slash">/</span>100</td>
+                            <td>B</td>
+                            <td><a class="delete"><img src="icons/trash-solid.png" class="icon"></a></td>
+                        </tr>
+                        <tr>
+                            <td>Homework 1</td>
+                            <td>10<span class="slash">/</span>10</td>
+                            <td>A</td>
+                            <td><a class="delete"><img src="icons/trash-solid.png" class="icon"></a></td>
+                        </tr>
+                    </table>
+                    <div style="display: flex;">
+                        <button class="add"><img src="icons/plus-solid.png" class="icon"> Add</button>
+                        <div style="flex-grow: 1;"></div>
+                        <button class="edit"><img src="icons/pen-solid.png" class="icon"> Edit</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // set overview username on welcome message from local storage
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("LOADED");
+            const currentUser = localStorage.getItem('currentUser');
+            const overviewUsername = document.getElementById('overview-username');
+            overviewUsername.textContent = currentUser ? currentUser.split('@')[0] : 'user';
+        });
+    </script>
+</body>
+
+</html>

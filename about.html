@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+    Author: Benjamin DeBiase
+    Date: 04/19/26
+    About page
+--->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Dashboard - About</title>
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="theme.js" defer></script>
+    <script src="dashboard.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h2>
+            <img src="/icons/graduation-cap.png" class="site-icon">Academic Dashboard</image>
+        </h2>
+        <a href="" class="account-icon"><img src="icons/circle-user-solid.png" class="icon"></a>
+    </header>
+
+    <main>
+        <div class="dropdown">
+            <h4>Signed in as</h4>
+            <div class="account-name">user</div>
+            <a href="" class="logout"><img src="icons/right-from-bracket-solid.png" class="icon">Log out</a>
+        </div>
+
+        <aside>
+            <nav class="normal">
+                <a href="/"><img src="icons/house-solid.png" class="icon">Overview</a>
+                <a href="settings.html"><img src="icons/gear-solid.png" class="icon">Settings</a>
+                <a href="profile.html"><img src="icons/user-solid.png" class="icon">Profile</a>
+                <div class="spacer"></div>
+                <a href="about.html" class="active"><img src="icons/circle-info-solid.png" class="icon">About</a>
+            </nav>
+
+            <nav class="compact">
+                <a href="/"><img src="icons/house-solid.png" class="icon"></a>
+                <a href="settings.html"><img src="icons/gear-solid.png" class="icon"></a>
+                <a href="profile.html"><img src="icons/user-solid.png" class="icon"></a>
+                <div class="spacer"></div>
+                <a href="about.html" class="active"><img src="icons/circle-info-solid.png" class="icon"></a>
+            </nav>
+        </aside>
+
+        <div class="content">
+            <h1>About</h1>
+
+            <section>
+                <h3>Project Information</h3>
+                <p style="margin-bottom: 1.5rem; line-height: 1.5;">Welcome to the Academic Dashboard. This is a simple
+                    website built to provide a clean, responsive tool for students to track their grades independently.
+                    It will show your grades in one area so you can easily monitor your academic progress.
+                </p>
+
+                <div>
+                    <label>Author:</label>
+                    <a href="mailto:bdebi001@fiu.edu">Benjamin DeBiase</a>
+                </div>
+                <div>
+                    <label>Version:</label>
+                    <span>0.1.0</span>
+                </div>
+                <div>
+                    <label>Release:</label>
+                    <span>April 19th 2026</span>
+                </div>
+            </section>
+
+            <section>
+                <h3>How To Use</h3>
+                <p style="margin-bottom: 1rem;">This tool is meant to be a personal tracker for your academic progress.
+                    To use it to its full advantage, add your classes and assignments to the site on the overview page.
+                    Then input your score and it will calculate your grade for you.
+                </p>
+                <ul style="margin: 0; padding-left: 1.5rem; line-height: 1.8;">
+                    <li>Go to Canvas find your current classes and see which assignments are available.</li>
+                    <li>Open the <strong>Overview</strong> page on this dashboard and use the forms to add those
+                        classes.</li>
+                    <li>Update your assignment scores as you get them to see a clear, simple view of your GPA.</li>
+                    <li>A video is listed below showing how to navigate Canvas to view the classes and assignments you
+                        wish to track.
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+/*
+    Author: Benjamin DeBiase
+    Date: 04/16/26
+    CSS for auth page
+*/
+
+/* fix login card from showing first when initial load on #signup */
+.preload * {
+    transition: none !important;
+}
+
+main {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    overflow: hidden;
+
+    /* smothly mask out sides of window to hide cards offscreen when sliding */
+    /* use calc(50%) to make sure gradient uses fixed size relative from center */
+    mask-image: linear-gradient(to right,
+            /* left visible start */
+            transparent calc(50% - 325px),
+            /* left visible end */
+            black calc(50% - 250px),
+            /* right visible start */
+            black calc(50% + 250px),
+            /* right visible end */
+            transparent calc(50% + 325px));
+}
+
+a {
+    color: AccentColor;
+    background: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        background: none;
+    }
+}
+
+.skip {
+    position: absolute;
+    bottom: 2rem;
+}
+
+.error {
+    color: ActiveText;
+    font-size: 0.9rem;
+    display: none;
+    margin: 0;
+}
+
+.card {
+    grid-area: 1 / 1;
+    position: relative;
+    animation: slideUp 0.5s ease-out forwards;
+    transition: box-shadow 0.15s ease-out, transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+    min-width: 200px;
+    max-width: 400px;
+
+    padding: 2rem;
+    gap: 1rem;
+    text-align: center;
+
+    label[for="remember"] {
+        text-align: left;
+        font-size: 0.9rem;
+    }
+
+    /* cascaded fade in animation */
+    h2,
+    form>*,
+    >div {
+        opacity: 0;
+        animation: slideUp 0.5s ease-out forwards;
+    }
+
+    /* delay slide animation for smooth effect */
+    /* title */
+    h2 {
+        animation-delay: 0.1s;
+    }
+
+    /* username input */
+    form> :nth-child(1) {
+        animation-delay: 0.2s;
+    }
+
+    /* password input */
+    form> :nth-child(2) {
+        animation-delay: 0.3s;
+    }
+
+    /* remember me checkbox */
+    form> :nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    /* login button */
+    form> :nth-child(4) {
+        animation-delay: 0.5s;
+    }
+
+    /* sign up / sign in text */
+    >div {
+        animation-delay: 0.6s;
+    }
+
+    /* use calc to ensure consistent spacing regardless of screen size */
+    &.login {
+        transform: translateX(calc(-100% - 150px));
+    }
+
+    &.signup {
+        transform: translateX(calc(100% + 150px));
+    }
+
+    &.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        translate: 0 50%;
+        opacity: 0;
+    }
+
+    to {
+        translate: 0 0;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,467 @@
+/* Author: Benjamin DeBiase
+   Date: 04/16/26
+   CSS for entire website
+   
+    Prioritizes browser-defined theming by using opacity instead of hard coded color values
+*/
+
+:root {
+    color-scheme: light dark;
+    --bg: linear-gradient(180deg,
+            var(--fg-color) 0%,
+            color-mix(in srgb, var(--fg-color), black 10%) 75%);
+    --fg-color: color-mix(in srgb, light-dark(black, white), transparent 90%);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input,
+select {
+    background-color: Canvas;
+    color: CanvasText;
+    border: 1px solid var(--fg-color);
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+}
+
+button {
+    border: solid 1px var(--fg-color);
+    border-radius: 0.1rem;
+    padding: 0.3rem 0.5rem;
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+p {
+    margin: 0;
+}
+
+.icon {
+    /* buffer icons without affecting laying during async load */
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: -0.2em;
+    margin-right: 0.5rem;
+}
+
+
+/* apply a filter to the image to get a solid black or white icon relative to the color scheme */
+.icon {
+    filter: brightness(0);
+    /* default light theme */
+}
+
+/* forced dark */
+html[data-theme="dark"] .icon {
+    filter: brightness(0) invert(1);
+}
+
+/* system */
+@media (prefers-color-scheme: dark) {
+
+    html[data-theme="system"] .icon,
+    html:not([data-theme]) .icon {
+        filter: brightness(0) invert(1);
+    }
+}
+
+main {
+    display: flex;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg);
+    border-bottom: 1px solid var(--fg-color);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    padding: 0.5rem;
+    padding-left: 3rem;
+
+    .site-icon {
+        width: 32px;
+        position: absolute;
+        left: 0.75rem;
+        top: 0.4rem;
+    }
+}
+
+aside {
+    display: flex;
+    width: 200px;
+    background: var(--bg);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    border-right: 1px solid var(--fg-color);
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.25rem;
+        flex: 1;
+    }
+
+
+    .spacer {
+        flex-grow: 1;
+    }
+}
+
+a {
+    background: color-mix(in srgb, var(--fg-color), transparent 80%);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background 0.2s ease-out, color 0.2s ease-out;
+    color: color-mix(in srgb, CanvasText, transparent 20%);
+
+    &:hover,
+    &.active {
+        background: var(--fg-color);
+        color: CanvasText;
+    }
+
+    &.account-icon {
+        background: none;
+        padding: 0;
+
+        .icon {
+            margin: 0;
+            height: 1.5rem;
+            width: 1.5rem;
+            vertical-align: middle;
+        }
+
+    }
+}
+
+hr {
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-top: 1px solid var(--fg-color);
+}
+
+.dropdown {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
+    padding: 1rem;
+    min-width: 200px;
+    background: var(--bg);
+    border: 1px solid var(--fg-color);
+    border-radius: 0.5rem;
+    color: CanvasText;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+
+    h4 {
+        margin: 0;
+    }
+
+    .account-name {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    a {
+        margin-top: 0.5rem;
+
+        &:hover {
+            background-color: color-mix(in srgb, ActiveText, transparent 80%);
+        }
+    }
+
+    &.open:not(.closing) {
+        display: flex;
+        animation: dialogSlideIn 0.2s ease-out forwards;
+    }
+
+    &.closing {
+        display: flex;
+        animation: dialogSlideOut 0.2s ease-in forwards;
+    }
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    flex: 1;
+    padding: 2rem;
+    padding-top: 1rem;
+    overflow-y: auto;
+}
+
+section,
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--fg-color);
+    border-radius: 0.5rem;
+    background: color-mix(in srgb, var(--fg-color), transparent 85%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+    position: relative;
+    transition: box-shadow 0.15s ease-out;
+
+    &:not(.card) {
+
+        input:not([type="checkbox"]),
+        select {
+            width: 250px;
+        }
+    }
+
+    &.card {
+        button {
+            align-self: center;
+        }
+    }
+
+    button {
+        width: 100px;
+    }
+
+    /* apply opacity layer on top for aniamted brighten effect on gradient */
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: light-dark(black, white);
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.15s ease-out;
+    }
+
+    &:hover,
+    &:focus-within {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+
+        &::before {
+            opacity: 0.005;
+        }
+    }
+
+    a.delete-class {
+        position: absolute;
+        top: 0;
+        right: 0;
+        visibility: hidden;
+        cursor: pointer;
+        color: var(--fg-color);
+        transition: color 0.2s ease-out;
+        font-size: 12px;
+
+        /* consistent width and height */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 8px;
+        height: 8px;
+
+        border-radius: 100%;
+        transform: translate(20%, -20%);
+        backdrop-filter: blur(10px);
+
+        border: 1px solid var(--fg-color);
+
+        .icon {
+            margin: 0;
+            height: 12px;
+            width: 12px;
+            vertical-align: middle;
+        }
+
+        &:hover {
+            color: ActiveText;
+        }
+    }
+
+    &:hover a.delete-class,
+    &:focus-within a.delete-class {
+        visibility: visible;
+    }
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grade-average {
+    opacity: 0.5;
+}
+
+table {
+    text-align: left;
+    border-collapse: collapse;
+
+    tr {
+
+        th,
+        td {
+            padding: 0.75rem;
+        }
+
+        &:has(td) {
+            opacity: 0.5;
+            border-top: 1px solid color-mix(in srgb, var(--fg-color), transparent 50%);
+            transition: opacity 0.1s ease-out, background 0.2s ease-out;
+            background-color: transparent;
+
+            &:hover {
+                opacity: 0.75;
+                background-color: color-mix(in srgb, var(--fg-color), transparent 80%);
+            }
+        }
+
+        a.delete {
+            visibility: hidden;
+            padding: 0;
+            background: none;
+            font-size: 0.85rem;
+            cursor: pointer;
+
+            &:hover {
+                color: ActiveText;
+            }
+        }
+
+        &:hover a.delete {
+            visibility: visible;
+        }
+
+        .slash {
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+            background: none;
+        }
+    }
+
+    th:first-child,
+    td:first-child {
+        width: 80%;
+    }
+
+    th:not(:first-child),
+    td:not(:first-child) {
+        text-align: center;
+    }
+}
+
+.classes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.overview-container {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    section {
+        flex: 1;
+        min-width: 275px;
+    }
+}
+
+ol {
+    margin: 0;
+    padding-left: 1.5rem;
+    line-height: 1.8;
+}
+
+/* https://medium.com/quick-programming/creating-a-simple-pie-chart-in-css-using-a-conic-gradient-cb154aefea29 */
+.pie {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background: conic-gradient(color-mix(in srgb, var(--fg-color), transparent 25%) 0% 60%,
+            color-mix(in srgb, var(--fg-color), transparent 50%) 60% 85%,
+            color-mix(in srgb, var(--fg-color), transparent 75%) 85% 100%);
+}
+
+@keyframes dialogSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dialogSlideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+nav.compact {
+    display: none;
+
+    img {
+        margin: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    aside {
+        width: unset;
+
+        nav.normal {
+            display: none;
+        }
+
+        nav.compact {
+            display: flex;
+        }
+    }
+}

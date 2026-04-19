@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+    Author: Benjamin DeBiase
+    Date: 04/19/26
+    Settings management page
+--->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Dashboard - Settings</title>
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="theme.js" defer></script>
+    <script src="dashboard.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h2>
+            <img src="/icons/graduation-cap.png" class="site-icon">Academic Dashboard</image>
+        </h2>
+        <a href="" class="account-icon"><img src="icons/circle-user-solid.png" class="icon"></a>
+    </header>
+
+    <main>
+        <div class="dropdown">
+            <h4>Signed in as</h4>
+            <div class="account-name">user</div>
+            <a href="" class="logout"><img src="icons/right-from-bracket-solid.png" class="icon">Log out</a>
+        </div>
+
+        <aside>
+            <nav class="normal">
+                <a href="/"><img src="icons/house-solid.png" class="icon">Overview</a>
+                <a href="settings.html" class="active"><img src="icons/gear-solid.png" class="icon">Settings</a>
+                <a href="profile.html"><img src="icons/user-solid.png" class="icon">Profile</a>
+                <div class="spacer"></div>
+                <a href="about.html"><img src="icons/circle-info-solid.png" class="icon">About</a>
+            </nav>
+
+            <nav class="compact">
+                <a href="/"><img src="icons/house-solid.png" class="icon"></a>
+                <a href="settings.html" class="active"><img src="icons/gear-solid.png" class="icon"></a>
+                <a href="profile.html"><img src="icons/user-solid.png" class="icon"></a>
+                <div class="spacer"></div>
+                <a href="about.html"><img src="icons/circle-info-solid.png" class="icon"></a>
+            </nav>
+        </aside>
+
+        <div class="content">
+            <h1>Settings</h1>
+
+            <section>
+                <h3>
+                    <img src="icons/paint-roller-solid.png" class="icon">Appearance
+                </h3>
+                <hr />
+                <div class="item">
+                    <label for="theme-select">Theme</label>
+                    <select id="theme-select">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="system">System</option>
+                    </select>
+                </div>
+            </section>
+
+            <section>
+                <h3>
+                    <img src="icons/bell-solid.png" class="icon">Notifications
+                </h3>
+                <hr />
+                <div class="item">
+                    <label for="notif-email">Email Notifications</label>
+                    <input type="checkbox" id="notif-email" checked>
+                </div>
+                <div class="item">
+                    <label for="notif-sms">SMS Alerts</label>
+                    <input type="checkbox" id="notif-sms">
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeSelect = document.getElementById('theme-select');
+            if (themeSelect) {
+                const savedTheme = localStorage.getItem('theme') || 'system';
+                themeSelect.value = savedTheme;
+
+                themeSelect.addEventListener('change', (e) => {
+                    const theme = e.target.value;
+                    localStorage.setItem('theme', theme);
+                    applyTheme(theme);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
